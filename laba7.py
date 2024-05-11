@@ -51,6 +51,7 @@ print(time.perf_counter() - st)
 #блок2 - построения графика корреляции 
 
 ###
+
 # corr_coef = np.corrcoef(y1, y2)
 
 # k = float(corr_coef[0][1])
