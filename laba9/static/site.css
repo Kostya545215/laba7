@@ -1,0 +1,35 @@
+header {
+    background: linear-gradient( #FFFAFA, #fabd73);
+    padding: 10px;  
+}
+li {
+    margin-bottom: 10px;   
+    padding: 5px;
+    color: black;
+    background-color: #f2ff00;
+    height: 80px;
+    width: 160px;
+    text-align: center;
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://bogatyr.club/uploads/posts/2023-06/1687271076_bogatyr-club-p-oboi-na-kompyuternii-stol-krutie-instagram-75.jpg');
+    background-size: cover;
+    color : white;
+}
+
+ul 
+{
+   list-style-type: "⚙️";
+}
+
+a{
+    font-size: 20px;
+    padding: 20px;
+    color: #293133;
+    text-decoration: none;
+}
+
+.computer-components{
+    float: right;
+}
