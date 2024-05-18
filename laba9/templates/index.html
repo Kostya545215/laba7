@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Ваш любимый компьютер!</title>
+    <style>
+        #total-price {
+            font-size: 24px;/
+        }
+        .computer-components{
+            float: right;
+        }
+    </style>
+    <script type="text/javascript" src="/static/update.js"></script>
+    <link href="static/store.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href = "#">Главная</a>
+        <a href = "#">Контанты</a>
+        <a href = "#">Готовые ПК</a>
+    </header>
+    <p id="total-price"></p>
+    <h1>Комплектующие компьютера:</h1>
+    <div class="computer-components">
+        <h3>Добавьте еще одно комплектующее:</h3>
+        <form>
+            <div>
+                <input type="text" name="part_name" id="part_name">
+                <label for="part_name">Название комплектующего</label>
+            </div>
+            <div>
+                <input type="number" name="price" id="price">
+                <label for="price">Цена (руб)</label>
+            </div>
+            <button onClick="addPart()">Добавить</button>
+        </form>
+    </div>
+    <ul>
+        {% for part in parts_list %}
+        <li>
+            <div>
+                <div>{{ part['part_name'] }}</div>
+                <div>{{ part['price'] }} руб.</div>
+                <input value="{{part['id']}}" onChange="updateProd(this)" name="used" type="checkbox" {% if part.used %} checked {% endif %}>
+                <label for="used">Используется</label>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <script>
+        function calculateTotalPrice() {
+            var totalPrice = 0;
+            var checkboxes = document.querySelectorAll("input[name='used']:checked");
+            for (var i = 0; i < checkboxes.length; i++) {
+                var price = parseFloat(checkboxes[i].parentNode.querySelector("div:nth-child(2)").innerText);
+                totalPrice += price;
+            }
+            return totalPrice;
+        }
+
+        function updateTotalPriceDisplay() {
+            var totalPrice = calculateTotalPrice();
+            document.getElementById("total-price").innerText = "Полная цена: " + totalPrice + " руб.";
+        }
+
+        var checkboxes = document.querySelectorAll("input[name='used']");
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].addEventListener("change", updateTotalPriceDisplay);
+        }
+        updateTotalPriceDisplay();
+    </script>
+</body>
+</html>
+
